@@ -160,7 +160,7 @@ class Ups
      *
      * @return string
      **/
-    private function buildPackages($number, $weight, $measurement = 'LBS', $service_code)
+    private function buildPackages($number, $weight, $measurement = 'LBS', $service_code=null)
     {
         $packages = array();
         if ($number > 1) {
@@ -247,7 +247,7 @@ class Ups
             $this->xml = strstr($result, '<?');
 
             $this->xml_result = new \SimpleXMLElement($this->xml);
-            
+
             return $this->parseResult();
         } catch (\Exception $e) {
             trigger_error(sprintf(
