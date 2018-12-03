@@ -146,7 +146,7 @@ class Ups
 				' . $this->buildPackages($options['packages'], $options['weight'], $options['measurement'], $options['service_code'])  . $negotiated_flag . '
 			</Shipment>
 		</RatingServiceSelectionRequest>';
-    
+
         return $this->send();
     }
 
@@ -180,7 +180,7 @@ class Ups
             }
         } else {
           switch($service_code) {
-            case self::SC_UPS_GROUND: //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
+            case self::SC_UPS_GROUND:
                   $packages[] = '<Package>
               <PackagingType>
                 <Code>02</Code>
@@ -199,7 +199,7 @@ class Ups
              </Package>';
              break;
 
-            default:
+            default: //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
                 $packages[] = '<Package>
             <PackagingType>
               <Code>02</Code>
