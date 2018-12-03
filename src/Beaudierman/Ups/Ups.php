@@ -180,7 +180,7 @@ class Ups
             }
         } else {
           switch($service_code) {
-            case self::SC_UPS_WORLDWIDE_EXPEDITED: //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
+            case ($service_code !== self::SC_UPS_GROUND): //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
                   $packages[] = '<Package>
               <PackagingType>
                 <Code>02</Code>
