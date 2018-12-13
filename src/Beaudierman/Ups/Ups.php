@@ -180,11 +180,16 @@ class Ups
             }
         } else {
           switch($service_code) {
-            case self::SC_UPS_WORLDWIDE_EXPEDITED: //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
+            case self::SC_UPS_GROUND:
                   $packages[] = '<Package>
               <PackagingType>
                 <Code>02</Code>
               </PackagingType>
+              <PackageServiceOptions>
+                <DeliveryConfirmation>
+                  <DCISType>2</DCISType>
+                </DeliveryConfirmation>
+              </PackageServiceOptions>
               <PackageWeight>
                 <UnitOfMeasurement>
                   <Code>' . $measurement . '</Code>
@@ -194,16 +199,11 @@ class Ups
              </Package>';
              break;
 
-            default: //SC_UPS_GROUND
+            default: //DeliveryConfirmation not supported; hence, there won't be any ServiceOptionsCharges
                 $packages[] = '<Package>
             <PackagingType>
               <Code>02</Code>
             </PackagingType>
-            <PackageServiceOptions>
-              <DeliveryConfirmation>
-                <DCISType>2</DCISType>
-              </DeliveryConfirmation>
-            </PackageServiceOptions>
             <PackageWeight>
               <UnitOfMeasurement>
                 <Code>' . $measurement . '</Code>
